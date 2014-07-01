@@ -27,46 +27,15 @@ $variaveisInt = explode(',',str_replace(array('int ',';',' '),"",$variaveisIntS)
 $iInt=0;
 $linhaStringvariaveisInt = "";
 $file = substr_replace($file," ",$posicaoIntInicial,$posicaoIntFinal-$posicaoIntInicial+1);
-if (!$variaveisInt){
+if ($variaveisInt != FALSE){
 	foreach ($variaveisInt as $varInt) {
 	    $s ="(int)$".$varInt;	
 		$file = str_replace($varInt,$s,$file);
 		$iInt++;
 		$linhaStringvariaveisInt = $linhaStringvariaveisInt.$s."=0;\n ";
 	}
-}
 $file = substr_replace($file,$linhaStringvariaveisInt,$posicaoIntInicial,0);
-
-
-
-//encontrando primeira declaracao de real  
-$posicaoRealInicial = strpos($file,"real");
-//encontrando o fim da linha 
-$posicaoRealFinal = strpos($file,";",$posicaoRealInicial);
-//pegando as variaveis 
-$variaveisRealS = substr($file,$posicaoRealInicial,$posicaoRealFinal-$posicaoRealInicial);
-//$variaveisInt = ;
-//declarando as variaveis int 
-$variaveisReal = explode(',',str_replace(array('float ',';',' '),"",$variaveisRealS));
-//limpa a linha variaveis int 
-$iReal=0;
-$linhaStringvariaveisReal = "";
-$file = substr_replace($file," ",$posicaoRealInicial,$posicaoRealFinal-$posicaoRealInicial+1);
-if ( !$variaveisReal){
-	foreach ($variaveisReal as $varReal) {
-	    $s ="(float)$".$varReal;	
-		$file = str_replace($varReal,$s,$file);
-		$iReal++;
-		$linhaStringvariaveisReal = $linhaStringvariaveisReal.$s."=0.0;\n ";
-	}
 }
-$file = substr_replace($file,$linhaStringvariaveisReal,$posicaoRealInicial,0);
-
-
-
-
-
-
 
 
 //lendo variaveis via input 
