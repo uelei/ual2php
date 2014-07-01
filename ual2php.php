@@ -27,11 +27,13 @@ $variaveisInt = explode(',',str_replace(array('int ',';',' '),"",$variaveisIntS)
 $iInt=0;
 $linhaStringvariaveisInt = "";
 $file = substr_replace($file," ",$posicaoIntInicial,$posicaoIntFinal-$posicaoIntInicial+1);
-foreach ($variaveisInt as $varInt) {
-    $s ="(int)$".$varInt;	
-	$file = str_replace($varInt,$s,$file);
-	$iInt++;
-	$linhaStringvariaveisInt = $linhaStringvariaveisInt.$s."=0;\n ";
+if ( $variaveisInt != NULL){
+	foreach ($variaveisInt as $varInt) {
+	    $s ="(int)$".$varInt;	
+		$file = str_replace($varInt,$s,$file);
+		$iInt++;
+		$linhaStringvariaveisInt = $linhaStringvariaveisInt.$s."=0;\n ";
+	}
 }
 $file = substr_replace($file,$linhaStringvariaveisInt,$posicaoIntInicial,0);
 
@@ -50,11 +52,13 @@ $variaveisReal = explode(',',str_replace(array('float ',';',' '),"",$variaveisRe
 $iReal=0;
 $linhaStringvariaveisReal = "";
 $file = substr_replace($file," ",$posicaoRealInicial,$posicaoRealFinal-$posicaoRealInicial+1);
-foreach ($variaveisReal as $varReal) {
-    $s ="(float)$".$varReal;	
-	$file = str_replace($varReal,$s,$file);
-	$iReal++;
-	$linhaStringvariaveisReal = $linhaStringvariaveisReal.$s."=0.0;\n ";
+if ( variaveisReal != NULL){
+	foreach ($variaveisReal as $varReal) {
+	    $s ="(float)$".$varReal;	
+		$file = str_replace($varReal,$s,$file);
+		$iReal++;
+		$linhaStringvariaveisReal = $linhaStringvariaveisReal.$s."=0.0;\n ";
+	}
 }
 $file = substr_replace($file,$linhaStringvariaveisReal,$posicaoRealInicial,0);
 
